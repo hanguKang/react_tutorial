@@ -1,4 +1,4 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +39,80 @@
 
 .read-the-docs {
   color: #888;
+} */
+@import 'tailwindcss'; /* prefix 기능을 사용하고 싶다면, @import 'tailwindcss' prefix(tw);  <div className="tw:text-gray-900" */
+@plugin "daisyui";
+/*tailwindcss에서 기본적으로 제공하는 
+    plugin 
+    @tailwindcss/forms,
+    @tailwindcss/aspect-ratio,
+    @tailwindcss/typography,
+    tailwindcss-children'*/
+
+/*@import "flowbite/src/themes/default";*/
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /*--spacing:0.25rem;을 사용하고 있다. 4px를 가리킨다.*/
+  /*--padding-10px: 10px 10px; <div className="p-10px" customizing으로 xy축으로 10px씩 적용*/
+  /*sapce-x , space-y flex 또는 grid 와 같이 사용해야 한다. 컨테이너의 자식요소들간의 간격 조정할 때 사용하며
+  grid같은 경우는 space-10 x, y축 모두 가능
+    space보다는 gap을 사용하도록 한다. 
+  */
+  --font-display: "Noto sans" , "sans-serif";
+
+  /*ver3 의 screens sm, md, lg */
+  --breakpoint-*:initial;
+  --breakpoint-sm : 480px;
+  --breakpoint-md : 768px;
+  --breakpoint-lg : 976px;
+
+  /*ver3의 extend : { colors: {custom:{blue:#0000ff, red:#ff0000}} } <div calssName="colors-custom-blue"*/
+  --color-avocado-100 : oklch(0.99 0 0 );
+  --color-avocado-200 : oklch(0.99 0 0 );
+  --color-avocado-100 : oklch(0.99 0 0 );
+
+  --color-twitter-blue:"#1DA1F2";
+  --color-orange-500:"#ffa500"; /*기존 색을 덮어쓰고 싶다면 이렇게 다시 써주면 새로운 theme가 된다. */
+  
 }
+
+:root {
+  font-family:Inter, system-ui, Avenir,  Helvetica, Arial, sans-serif; 
+  line-height:1.5;
+  font-weight:400;
+
+  color-scheme : light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+
+.btn{
+  @apply rounded-full;
+}
+
+/*
+ver3 에서는 @layer를 사용
+@layer를 사용하면 관련 스타일을 별도의 레이어로 그룹화 할 수 있어요
+이 layer는 base, components, utilities에만 적용할 수 있습니다!
+base에 적용하고싶다면 @layer base 와 같은 형태로 작성하면 되겠죠?
+@layer components {
+  .btn {
+    @apply h-10
+    w-36 rounded-md
+     bg-[#f8f9fa] text-sm 
+     text-gray-800 transition-shadow 
+     hover:shadow-md
+     hover:ring-1
+    hover:ring-gray-200 focus:outline-none
+     active:ring-gray-300;
+  }
+  .link {
+    @apply cursor-pointer hover:underline;
+  }
+  .header-icon {
+    @apply cursor-pointer rounded-full
+    bg-transparent p-2 text-4xl hover:bg-gray-200;
+  }
+}
+*/
